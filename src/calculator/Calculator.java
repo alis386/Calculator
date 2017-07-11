@@ -17,14 +17,33 @@ public class Calculator {
             }
 
             ExpressionSplitter splitter = new ExpressionSplitter(expression);
+            double result = Double.parseDouble(splitter.getElement());
             while (true) {
-                String element = splitter.getElement();
-                if (element != null) {
-                    System.out.println("  '" + element + "'");
-                } else {
+                String operator = splitter.getElement();
+                String value = splitter.getElement();
+
+                if (operator == null || value == null) {
                     break;
                 }
+
+                switch (operator) {
+                    case "*":
+                        result = result * Double.parseDouble(value);
+                        break;
+                    case "/":
+                        result = result / Double.parseDouble(value);
+                        break;
+                    case "+":
+                        result = result + Double.parseDouble(value);
+                        break;
+                    case "-":
+                        result = result - Double.parseDouble(value);
+                        break;
+                    
+                }
             }
+
+            System.out.println(result);
         }
 
     }
