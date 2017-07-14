@@ -16,36 +16,13 @@ public class Calculator {
                 break;
             }
 
+            Solver solver = new Solver();
             ExpressionSplitter splitter = new ExpressionSplitter(expression);
-            double result = Double.parseDouble(splitter.getElement());
-            while (true) {
-                String operator = splitter.getElement();
-                String value = splitter.getElement();
+            ReversePolishNotation rpn = new ReversePolishNotation(splitter, solver);
 
-                if (operator == null || value == null) {
-                    break;
-                }
-
-                switch (operator) {
-                    case "*":
-                        result = result * Double.parseDouble(value);
-                        break;
-                    case "/":
-                        result = result / Double.parseDouble(value);
-                        break;
-                    case "+":
-                        result = result + Double.parseDouble(value);
-                        break;
-                    case "-":
-                        result = result - Double.parseDouble(value);
-                        break;
-                    
-                }
-            }
-
-            System.out.println(result);
+            rpn.solve();
+            System.out.println(solver.getResult());
         }
-
     }
 
 }

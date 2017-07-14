@@ -9,7 +9,7 @@ public class ExpressionSplitter {
         this.expression = expression;
     }
 
-    public String getElement() {
+    public String getNextElement() {
         if (position >= expression.length()) {
             return null;
         }
