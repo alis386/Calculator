@@ -24,8 +24,8 @@ public class ExpressionSplitter {
 
         while (position < expression.length()) {
             character = expression.charAt(position);
-            if (isNumber(character) == true) {
-                number = number + character.toString();
+            if (isNumber(character)) {
+                number += character.toString();
                 position++;
             } else {
                 break;
